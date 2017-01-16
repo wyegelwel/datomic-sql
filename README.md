@@ -19,7 +19,7 @@ Then you could use datomic-sql to query for bookmarks of type "web".
 ```clojure
 (require '[datomic-sql.core :as ds])
 
-(q '[:find ?title
+(ds/q '[:find ?title
          :in $ ?type
          :where 
          [_ :bookmarks/type ?type]
@@ -28,7 +28,7 @@ Then you could use datomic-sql to query for bookmarks of type "web".
         :subprotocol "sqlite"
         :subname "test.db"}
        "web")
-#{[\"my-cool-title\"] [\"my-cool-title2\"]}
+#{["my-cool-title"] ["my-cool-title2"]}
 ``` 
 
 If your datomic queries meet the following conditions, you could (not recommended) use datomic-sql
